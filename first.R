@@ -88,3 +88,134 @@ number <- "100"
 str <- "R languge"
 result=number +str
 print(result)
+
+제어문 -선택구조
+
+job.type <- 'a'
+if(job.type=='b'){
+ bonus <- 200
+} else {
+  bonus <- 100}
+cat("joy type :",job.type,"\t\tbounus:",bonus)
+
+job.type <- 'b'
+
+if(job.type=='a'){bonus <- 200}
+cat("joy type :",job.type,"\t\tbonus:",bonus)
+
+score <- 85
+
+if(score >=90)
+  {grade <- 'a'
+} else if(score>=80){grade <-'b'
+} else if(score>=70){grade <- 'c'
+} else if(score>=60) {grade <- 'd'
+} else {grade <- 'f'}
+cat("score :",score,"\t\tgrade:",grade)
+
+
+num <- 20
+rema <- num %% 2
+#if (remainder ==0){
+if(num%% 2 ==0){
+  oddeven <- '짝수'
+}else{
+  oddeven <- '홀수'
+}
+     
+cat("num:",num,"는",oddeven,"이다")
+
+a <- 4
+b <- 20
+
+if(a>5 & b>5) {
+  cat(a,">5 and",b,">5")
+} else { 
+  cat(a,"<=5 or ",b,"<=5")
+}
+
+a <- 10
+b <- 20
+
+if(a>b){
+c <- a
+} else {
+ 
+ 
+}
+
+c <- ifelse(a>b,a,b)
+cat("a =",a, "\tb=", b, "\tb=",c)
+
+a <-10
+b <- 5
+c <- 8 
+
+if(a>b and a>c and  )
+  
+a <- 10      #ma 에 a를 저장해서 최대값을 구하는 방법
+b <- 5
+c <- 8
+ma <- a
+
+if(b>ma){
+  ma=b
+}
+if(c>ma){
+  ma=c
+}
+cat("a=",a,"b=",b,"c=",c,"ma=",ma)
+
+
+#반복구조:
+#for문
+
+for(i in 1:10) {
+  print('*')
+}
+
+multiple=2
+for(i in 2:9){
+  cat(multiple,'x',i,'=',multiple*i,'\n')
+}
+
+#while 문
+i <- 1
+
+while(i <= 10) {
+  print(i)
+  i <- i+1
+}
+
+multiple <- 2
+i <- 2
+while(i<=9) {
+  cat(multiple,'x',i,'=',multiple*i,'\n')
+  i <- i+1
+}
+
+for(i in 1:100) {
+  i <- i+1
+  cat(i="i+1",i,"\n")
+}
+
+1부터 100까지 한줄에 10개씩 출력
+#1
+linecount <- 1
+for (i in 1:100) {
+  cat(i,'')
+  linecount <- linecount+1
+  if(linecount>10){
+    print('\n')
+    linecount <- 1
+  }
+}
+
+#2
+for (i in 1:100){
+  cat(i,'')
+  if(i %% 10==0){
+    print('\n')
+  }
+}
+
