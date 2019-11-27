@@ -8,3 +8,5 @@
 #
 #
 print("HELLO,WORLD!")
+
+number <- 10
