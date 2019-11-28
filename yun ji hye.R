@@ -26,9 +26,7 @@ sort(x,decreasing = TRUE) #8
 sort(x,decreasing = FALSE) #9
 sort(y,decreasing = FALSE)
 
-head(x,10)
-head(y,10)
-d3 <- {head(x,10) & head(y,10)}
+d3 <- union(x,y)#9
 
 v1 <- 51:90 ; v1
 d <- v1
@@ -37,6 +35,18 @@ length(d>70)  #2
 sum(d)        #3
 d[60<v1 & 73>v1]#4
 d[65>v1 | 80<v1]#5
-all(d/7)#6
-#7
-sum(d/2 == 0)
+
+for (i in v1) {    #6
+  if(i %% 7==3)
+    print(i)
+}
+
+
+
+
+
+
+
+
+
+
