@@ -288,4 +288,18 @@ my.info[[4]][1]   #벡터의 첫번째
 
 
 
+#Factor형 (범주형)
+bt <- c('A','B','B','O','AB','A')
+bt.new <- factor(bt)  #팩터형 벡터 :범위 :levels
+bt
+bt.new
+bt[5]
+bt.new[5]
+levels(bt.new) 
+as.integer(bt.new)  #번호 기준이 레벨a,ab,b,o 
+bt.new[7] <- 'B' #7번째에 공간을 만들어서 b를 넣는다
+bt.new[8] <- 'C' #8번째에 공간을 만들어서 c를 넣어야 하는데 팩터 함수는 범위를 정해준 것(a,b,ab,o 형 밖에 없음)
+#에 포함되지 않았으므로 na가 출력된 것
+bt.new 
+
 
