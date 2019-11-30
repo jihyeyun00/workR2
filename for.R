@@ -123,12 +123,12 @@ iris[1:5, ]; iris[1:5,]
 #matrix 와 dara frame에서 사용하는 함수
 dim(person.info) #관측치의 수와 변수의 수: 
 dim(iris)
-nrow(person.info) 
+nrow(person.info) #행의 개수를 셀때도 사용함
 nrow(m3)
-ncol(person.info)
+ncol(person.info) #열의 개수를 셀때도 사용함
 head(iris)           #실제 데이터 확인
 tail(iris)           #"
-str(iris)            #팩터함수로 확인하기
+str(iris)            #요약정보확인,팩터자료형도 확인하기
 iris[ ,5]
 unique(iris[ ,5])   #중복된 데이터중에서 하나씩만 뽑아서 나열하라
 table(person.info[,"blood.type"])#어떤 종류로 구성되는지 알수 있다
@@ -158,7 +158,7 @@ t(z)
 
 #조건에 맞는 행과 열의 값 추출(data frame만 가능,매트릭스에서는 못씀)
 IR.1 <- subset(iris, Species=="setosa");   IR.1 #subset은 부분만 추출하고자 할때
-IR.2 <- subset(iris, Sepal.Length>5,0 & Sepal.Width>4.0); IR.2
+IR.2 <- subset(iris, Sepal.Length>5.0 & Sepal.Width>4.0); IR.2
 IR.2[ , c(2,4)]
 
 
