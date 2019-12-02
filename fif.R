@@ -180,7 +180,7 @@ boxplot.stats(dist)$out   #이상치(특이값)목록
 boxplot(Petal.Length~Species, #그룹으로 묶일것 물결 다음
         data=iris, 
         main='품종별 꽃잎의 길이')
-boxplot(iris$Petal.Length-irisSpecies,
+boxplot(iris$Petal.Length~iris$Species,
         main='품종별 꽃잎의 길이') 
 
 
