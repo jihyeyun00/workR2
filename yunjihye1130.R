@@ -77,21 +77,21 @@ st['Ohio',c('Population','Income')]
 
 # 13. 인구가 5,000 이상인 주의 데이터만 출력
 
-subset(st, Population>5000)
+subset(st, Population>5000)   =빼먹었음
 
 # 14. 수입이 4,500 이상인 주의 인구, 수입, 면적을 출력
-A<- subset(st, Income> 4500) 
+A<- subset(st, Income> 4500)   =빼먹었음,선생님방법다름
 A[ ,c('Population','Income','Area')]      
 
 # 15. 수입이 4,500 이상인 주는 몇 개인지 출력
 dim(A)
-B <- dim(A)
+B <- dim(A)  다름
 B[1]
 
 nrow(A)
 
 # 16. 전체 면적(Area)이 100,000 이상이고, 결빙일수(Frost)가 120 이상인 주의 정보 출력
-B<- subset(st,Area>100000 & Frost>120); B 
+B<- subset(st,Area>100000 & Frost>120); B   =빼먹음
 
 # 17. 인구(Population)가 2,000 미만이고, 범죄율(Murder)이 12미만인 주의 정보 출력
 
@@ -115,7 +115,7 @@ G2 <- max(G1)
 G3<- subset(st,Life.Exp==G2)
 rownames(G3)
 # 21 Pennsylvania 주보다 수입(Income)이 높은 주들 출력?
-
+??
 
 # 문3)
 # R에서 제공하는 mtcars 데이터셋은 자동차 모델에 대한 제원 정보를 담고 있다.
