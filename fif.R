@@ -95,7 +95,7 @@ dsbar
 barplot(ds,main='favorite season') #막대그래프
 
 
-ds.new <- ds[c(2,3,1,4)]
+ds.new <- ds[c(2,3,1,4)] #ds 에 인덱스값을 새롭게 지정
 ds.new
 barplot(ds.new,main = 'favorite season')  #main 제목
 
@@ -161,8 +161,7 @@ hist(dist, main='Histogram for 제동거리',xlab = '제동거리',ylab='빈도�
 
 #상자그림(boxplot, 상자수염그림)
 #사분위수를 시각화하여 그래프 형태로 표시
-#상자그림은 하나의 그래프로 데이터의 분포
-#형태를 포함한 다양한 정보를 전달
+#상자그림은 하나의 그래프로 데이터의 분포 형태를 포함한 다양한 정보를 전달
 #자료의 전반적인 분포를 이해하는데 도움
 #구체적인 최소 /최대/중앙값을 알기는 어렵다
 
@@ -180,15 +179,17 @@ boxplot.stats(dist)$out   #이상치(특이값)목록
 boxplot(Petal.Length~Species, #그룹으로 묶일것 물결 다음
         data=iris, 
         main='품종별 꽃잎의 길이')
-boxplot(iris$Petal.Length-irisSpecies,
+boxplot(iris$Petal.Length~iris$Species,
         main='품종별 꽃잎의 길이') 
 
 
 #한 화면에 여러 그래프 작성
 par(mfrow=c(1,3)) #1X3 가상화면 분할
-barplot(table(mtCars$carb,main="C",
+barplot(table(mtcars$carb),main="C",
               xlab="carburetors",ylab="freg",
               col="blue")
         
+barplot(table(mtcars$carb),main = )
         
-par(mfrow=c(1,1)) #가상화면 분할해제
+        
+par(mfrow=c(1,3)) #가상화면 분할해제
