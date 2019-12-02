@@ -144,7 +144,7 @@ table(person.info[,"blood.type"])#어떤 종류로 구성되는지 알수 있다
 
 #Matrix/data frame사용함수
 #행렬/열별 합계와 평균계산 (apply 함수이용한 경우)
-colSums(iris[,-5]);  apply(iris[,1:4],2,sum) #팩터타입은 제외 마지막 열제외(팩터타입으로 나왔움)
+colSums(iris[,-5]);  apply(iris[,1:4],2,sum) #팩터타입은 제외 마지막 열제외(팩터타입으로 나왔움) 1에서 4변수 까지 열 나오고 행은 다 더한거
 colMeans(iris[,-5]);apply(iris[,1:4],2,mean) #숫자가 2가 열row
 rowSums(iris[,-5]);  apply(iris[,-5],1,sum)
 rowMeans(iris[,-5]); apply(iris[,-5],1,mean)
