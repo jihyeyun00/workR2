@@ -28,7 +28,9 @@ t.t<-c(14,10,20,7,25,9,15,13,4,21);t.t
 plot(sco.1,t.t,main = "성적과 시청시간 그래프",
      xlab="시청시간",ylab="성적",
      col="green",pch=19)
+s.t<-data.frame(sco.1,t.t);s.t
 cor(s.t[,1:2])
+cor(sco.1,t.t)
 #상관계수: 음의 상관관계가 있다.
 
 
