@@ -146,7 +146,7 @@ myds<-BostonHousing[,c("crim",
 # rm:주택 1가구당 방수
 # dis:보스턴 5개 지역 센터 까지의 거리
 # tax:재산세율
-# medv:주택가격
+# medv:주택가격             
 
 class(BostonHousing)
 dim(BostonHousing)
@@ -157,12 +157,12 @@ myds<-BostonHousing[,c("crim",
                        "rm",
                        "dis",
                        "tax",
-                       "medv")] ;myds
+                       "medv")] ;myds      
 
 
 
-#2단계:파생변수 추가: grp 변수 추가(주책 가격 상중하)  값이 나옴
-grp<-c()
+#2단계:파생변수 추가: grp 변수 추가(주택가격 상중하)  값이 나옴
+grp<-c()                                    ##?? 여기부터 쭉 모르겠다.
 for (i in 1:nrow(myds)) {
         if(myds$medv[i]>=25.0){
            grp[i]<-'H'
@@ -197,7 +197,7 @@ for(i in 1:5){
 par(mfrow=c(1,1)) #가상화면 복귀
 
 
-#5단계:상자그림에 의한 관측값의 분포 확인 ?? 어떻게 읽냐
+#5단계:상자그림에 의한 관측값의 분포 확인 ?? 어떻게 읽냐 모르겠다.....
 
 par(mfrow=c(2,3))
 for(i in 1:5) {
@@ -206,9 +206,9 @@ for(i in 1:5) {
 
 par(mfrow=c(1,1)) #가상화면 복귀
 
-#6단계:그룹별 관측값 분포 확인 ?? 값 안나옴
+#6단계:그룹별 관측값 분포 확인 # 값나옴
 boxplot(myds$crim~myds$grp,
-        main="1인당 범죄율")
+        main="1인당 범죄율")    ##?? 어떻게 읽냐
 boxplot(myds$rm~myds$grp,
         main="방의 개수")
 
@@ -220,11 +220,11 @@ pairs(myds[,-6])
 
 point<-as.interger(myds$grp)
 color<-c("red","green","blue")
-pairs(myds[,-6],pch=point,
+pairs(myds[,-6],pch=point, 
       col=color[point])
 
 #9단계:변수 간 상관 계수 확인
-cor(myds[,-6])
+cor(myds[,-6])                  ##?? 왜 -6이지?
 
 
 #Data 이해:1.data set 에 대한 이해 

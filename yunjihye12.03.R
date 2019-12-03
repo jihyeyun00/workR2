@@ -7,11 +7,13 @@
 
 inco.1<-c(121,99,41,35,40,29,35,24,50,60) ;inco.1
 leti.1<-c(19,20,16,16,18,12,14,12,16,17);leti.1
+i.i<-data.frame(inco.1,leti.1);i.i
 
 plot(inco.1,leti.1,main = "수입과 교육기관 그래프",
      xlab="수입", ylab="교육기간",
      col="red",pch=19)
 
+cor(i.i) #데이터프레임 만들어준 후에 상관계수 구하기
 cor(inco.1,leti.1)
  #양의 상관관계가 있음
 
@@ -28,7 +30,8 @@ t.t<-c(14,10,20,7,25,9,15,13,4,21);t.t
 plot(sco.1,t.t,main = "성적과 시청시간 그래프",
      xlab="시청시간",ylab="성적",
      col="green",pch=19)
-s.t<-data.frame(sco.1,t.t);s.t
+
+s.t<-data.frame(sco.1,t.t);s.t #데이터프레임 만들어준 후에 상관계수
 cor(s.t[,1:2])
 cor(sco.1,t.t)
 #상관계수: 음의 상관관계가 있다.
@@ -49,7 +52,7 @@ pairs(target,main="muti plots")
 cor(target)
 
 cor(mtcars,mpg) #한줄로 끝남
-#w.t 가 가장 상관관계가 높음
+#w.t 가 가장 상관관계가 높음, 음의 상관관계
 
 
 # 문4)
