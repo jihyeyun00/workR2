@@ -92,7 +92,7 @@ class(favorite)
 table(favorite)     #도수분포표(몇개있는지)
 table(favorite) /length(favorite)  #length 비율
 ds <- table(favorite)
-dsbar
+
 barplot(ds,main='favorite season') #막대그래프
 
 
@@ -135,7 +135,7 @@ mean(weight,trim = 0.2)
 mean(weight.heavy,trim = 0.2)
 #사분위수-데이터를 4등분 한것,2사분위값이 중앙값과 같음. 1~3사분위 까지 대략50%된다.
 quantile(weight.heavy)
-quantile(weight.heavy,(0:10)/10) 대략25% 는 63점 , 대략 50%는
+quantile(weight.heavy,(0:10)/10) #대략25% 는 63점 , 대략 50%는 65점  (0에서 100까지 10% 씩 나눈것)
 summary(weight.heavy) #사분위수 , 최대 ,최소 중앙값
 
 
