@@ -10,7 +10,9 @@ leti.1<-c(19,20,16,16,18,12,14,12,16,17);leti.1
 
 plot(inco.1,leti.1,main = "수입과 교육기관 그래프",
      xlab="수입", ylab="교육기간",
-     col="red",pch=19) 
+     col="red",pch=19)
+
+cor(inco.1,leti.1)
  #양의 상관관계가 있음
 
 # 
@@ -26,11 +28,8 @@ t.t<-c(14,10,20,7,25,9,15,13,4,21);t.t
 plot(sco.1,t.t,main = "성적과 시청시간 그래프",
      xlab="시청시간",ylab="성적",
      col="green",pch=19)
-
-#상관계수: 음의 상관관계가 있다.
-s.t2<-lm(t.t~sco.1,data=s.t);s.t2 #회귀식
-abline(s.t2) #회귀선
 cor(s.t[,1:2])
+#상관계수: 음의 상관관계가 있다.
 
 
 # 
@@ -43,7 +42,7 @@ str(mtcars)
 
 m.t<-c("mpg","disp","hp","drat","wt","qsec");m.t
 target<-mtcars[ , m.t]
-head(target)
+
 pairs(target,main="muti plots")
 cor(target)
 
@@ -68,9 +67,11 @@ cor(mtcars,mpg) #한줄로 끝남
 year<-2015:2026
 p.p<-c(51014,51245,51446,51635,51811,51973,52123,52261,52388,52504,52609,52704)
 
-plot(year, p.p, main="예상인구수",  #lwd = 선의 두께 ,#lty= 선의 모양
-     type="l",  lty=1,  lwd=1,        #month :행  late :열
-     xlab="year",  ylab="인구수")
+plot(year, p.p, main="예상인구수",  #lwd = 선의 두께 ,
+                                    #lty= 선의 모양
+     type="l",                      
+     xlab="year",  ylab="인구수",
+     lty=1,  lwd=1,)
 
 
 # 문5)
