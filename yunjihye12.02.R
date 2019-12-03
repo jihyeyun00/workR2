@@ -60,10 +60,14 @@ median(score)
 # 4. 전체 성적의 표준편차를 출력하시오.
 sd(score)
 # 5. 가장 성적이 높은 과목의 이름을 출력하시오.
-which.max(score)
+which.max(score) #선생님 답 :names( score[ score == max( score ) ] )
+
 # 6. 성적에 대한 상자그림을 작성하고, 이상치에 해당하는 과목이 있으면 출력하시오.
-boxplot(score,main='학생A')
+boxplot(score,main='학생A') #박스플롯:데이터가 분포가 어떤지있지 알수 
 boxplot.stats(score)$out  
+
+#이상치 없음
+
 # 7. 다음 조건을 만족하는 위 성적에 대한 히스토그램을 작성하시오.
 # (그래프 제목: 학생 성적, 막대의 색: 보라색)
 str(score)
@@ -74,24 +78,29 @@ hist(score, main='학생성적',col='purple')
 
 # 문4
 # R에서 제공하는 mtcars 데이터셋에 대해 다음 문제를 해결하기 위한 R코드를 작성하시오.
-# 
+#  #선생님은 먼저 확인 :
+#dim( mtcars )
+#str( mtcars ) :,data frame 인지,num 은 연속형, 도수분포해보고 
+#head( mtcars )
+#tail( mtcars )
+
 # 1. 중량(wt)의 평균값, 중앙값, 절사평균값(절사범위: 15%), 표준편차를 각각 구하시오.
 mtcars
 m.w <- mtcars$wt  ; mtcars[,6]
 mean(m.w)
 median(m.w)
 sd(m.w)
-
+mean(m.w= 0.15)
 # 2. 중량(wt)에 대해 summary( ) 함수의 적용 결과를 출력하시오.
-summary(m.w)
+summary(m.w)   #최소, 최대, 중앙 값등을 알려줘서 한번에 알 수 있다.
 
 # 3. 실린더수(cyl)에 대해 도수분포표를 출력하시오.
 c.l <- mtcars$cyl; c.l
 table(c.l)
 
 # 4. 앞에서 구한 도수분포표를 막대그래프로 출력하시오.
-barplot(c.l,main = '실린더 수')
-
+barplot(c.l,main = '실린더 수')  #팩터(숫자)가 아니지만 성격을 보면 범주형이라는 것
+                                    #그래서 도수 분포표를 쓸 수 있다. 
 # 5. 중량(wt)의 히스토그램을 출력하시오.
 hist(m.w)
 

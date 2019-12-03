@@ -1,4 +1,5 @@
-#5일차
+#5일차 -data 분석
+
 setwd("D:/WorkR2")
 df <- read.table(file="airquality.txt".header=T)
 df
@@ -33,8 +34,8 @@ os 별 환경설정
 library(rJava)
 library(xlsx)
 
-반드시 패키지를 쓰겠다는 함수 library 
-rjava 를 먼저 쓰고 xlsx 를 써야함
+#반드시 패키지를 쓰겠다는 함수 library 
+#rjava 를 먼저 쓰고 xlsx 를 써야함
 
 
 df.xlsx <- read.xlsx(file="airquality.xlsx",sheetIndex = 1,
@@ -73,7 +74,7 @@ idx
 
 
 #data 분석절차 ->문제 정의 ->data 수집->data 정제, 전처리->data 탐색 ->결과 보고서
-#현상을 분석 ,이면을 찾는 것 
+#현상을 분석 ,이면을 찾는 것 ****제일 처음으로 범주형이냐 , 연속형이냐를 알아봐야함
 
 #data 탐색 : 탐색적 data분석 
 #머신러닝(ML):Model 구축
@@ -115,6 +116,10 @@ pie(ds,main = 'favorite season',col=colors) #색상부여하는 인수-col
 
 
 
+
+
+
+
 #단일변수(일변량)연속형 자료탐색 -값의 왜곡이 있을 수 있어서 중앙값이나, 절사평균을쓴다.
 
 
@@ -123,7 +128,7 @@ weight.heavy <- c(weight,120);weight.heavy
 #평균 -데이터분포가 어떻냐에 따라서 다를수 있다.
 mean(weight);mean(weight.heavy)
 
-#중앙값  - 가장 가운데 값을 찾음, 큰 차이가 없다. (평균보다 유용)
+#중앙값  - 가장 가운데 값을 찾음, 큰 차이가 없다. (평균보다 유용) ,굵은 선
 median(weight);median(weight.heavy)
 #절사평균 -가장 높은값 ,가장 낮은 값을 제외한 평균 trim :20% 를 잘라내고 한것 
 mean(weight,trim = 0.2)
@@ -132,10 +137,6 @@ mean(weight.heavy,trim = 0.2)
 quantile(weight.heavy)
 quantile(weight.heavy,(0:10)/10) 대략25% 는 63점 , 대략 50%는
 summary(weight.heavy) #사분위수 , 최대 ,최소 중앙값
-
-
-
-
 
 
 #산포(distribution)-값이 퍼져있는 정도파악, -분산값이나 표준편차가 크면 흩어져있다. 
@@ -155,7 +156,10 @@ diff(weight)
 str(cars)
 dist <- cars[,2]
 hist(dist, main='Histogram for 제동거리',xlab = '제동거리',ylab='빈도수',
-     border='blue',col='green',las=3,breaks=5) #breaks 막대수
+     border='blue',col='green',las=3,breaks=5) #breaks 막대수, 
+
+
+
 
 
 
@@ -169,7 +173,7 @@ hist(dist, main='Histogram for 제동거리',xlab = '제동거리',ylab='빈도�
 boxplot(dist,main='자동차제동거리')
 
 boxplot.stats(dist)
-boxplot.stats(dist)$stats  #정상범위 사분위수
+boxplot.stats(dist)$stats  #정상범위 사분위수,상태
 boxplot.stats(dist)$n      #관측치 개수
 boxplot.stats(dist)$conf   #중앙값 신뢰구간
 boxplot.stats(dist)$out   #이상치(특이값)목록
