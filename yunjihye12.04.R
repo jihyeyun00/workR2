@@ -51,9 +51,9 @@ boxplot(st,main='state')
 out.st<-boxplot.stats(st$Area)$out
 st$Area[st$Area%in%out.st]<-NA
 head(st)
-# (3) st에서 NA가 존재하는 행들을 제거하여 st2에 저장하시오. ??
+# (3) st에서 NA가 존재하는 행들을 제거하여 st2에 저장하시오. 
 # 
-st2<-st[complete.cases(out.st),]
+st2<-st[complete.cases(st),]
 head(st2)
 
 
@@ -64,30 +64,42 @@ head(st2)
 # (1) airquality를 AQ에 저장하시오.
 str(airquality)
 AQ<-data.frame(airquality) ;AQ
-# (2) AQ에서 열별로 NA의 개수를 출력하시오.
-AQ.na<-apply(AQ,2,function(y) sum(is.na(y))) 
-AQ.na
-# (3) AQ에서 행별로 NA의 개수를 출력하시오.??
+# (2) AQ에서 열별로 NA의 개수를 출력하시오.  #열은 apply ?
+AQ.cna<-apply(AQ,2,function(y) sum(is.na(y))) 
+AQ.cna
+# (3) AQ에서 행별로 NA의 개수를 출력하시오.  #행은 rowSums ->sum?
 
+rowSums(is.na(AQ))
+sum(rowSums(is.na(AQ))>0)
+# (4) AQ에서 NA를 포함하지 않은 행들만 출력하시오.
 
-sum(is.na(AQ.na))
-# (4) AQ에서 NA를 포함하지 않은 행들만 출력하시오.??
-head(AQ.na)
-AQ.na
-y<-AQ.na[!complete.cases(AQ.na),]
-head(y)
+AQ[!complete.cases(AQ),]; AQ
+AQ.nna<-AQ[complete.cases(AQ),];AQ.nna
 
 
 # (5) AQ에서 NA를 NA가 속한 열의 평균값으로 치환하여 AQ2로 저장하고, AQ2의 내용을
-# 출력하시오.		
-# 
+# 출력하시오.	??	
+ 
+mean(AQ.nna)
+
+
+
 # 문4)
 # R에서 제공하는 state.x77 데이터셋에 대하여 다음 문제를 해결하기 위한
 # R 코드를 작성하시오.
 # 
 # (1) state.x77 데이터셋을 Population(인구수)를 기준으로 오름차순 정렬하시오.
+head(state.x77)
+st<-data.frame(state.x77)
+st[order(st$Population),]
 # (2) state.x77 데이터셋을 Income(소득)을 기준으로 내림차순 정렬하시오.
-# (3) Illiteracy(문맹률)가 낮은 상위 10개 주의 이름과 문맹률을 출력하시오.	
+st[order(st$Income,decreasing = T),]
+# (3) Illiteracy(문맹률)가 낮은 상위 10개 주의 이름과 문맹률을 출력하시오.	??
+
+subset[st[order(st$Income,decreasing = T),]]
+
+il<-st[order(st$Illiteracy,decreasing=T),]
+subset(il,)
 # 
 # 문5)
 # R에서 제공하는 mtcars 데이터셋에 대하여 다음 문제를 해결하기 위한 R
@@ -95,11 +107,23 @@ head(y)
 # 
 # (1) mtcars 데이터셋을 gear(기어)의 개수에 따라 그룹을 나누어 mt.gear에 저장하
 # 시오.(단, split() 함수를 사용)
-# (2) mt.gear에서 gear(기어)의 개수가 4인 그룹의 데이터를 출력하시오.
+
+sp<-split(mtcars,mtcars$gear)
+sp
+mt.gear<-sp
+# (2) mt.gear에서 gear(기어)의 개수가 4인 그룹의 데이터를 출력하시오.??
+subset(sp,mt.gear$gear==4)
+
+mt.gear%>%
 # (3) mt.gear에서 gear(기어)의 개수가 3인 그룹과 5인 그룹의 데이터를 합쳐서
-# mt.gear.35에 저장하고 내용을 출력하시오.
-# (4) mtcars 데이터셋에서 wt(중량)가 1.5~3.0 사이인 행들을 추출하여 출력하시오.
-# 
+# mt.gear.35에 저장하고 내용을 출력하시오.??
+
+subset(mt.gear,gear==3 & gear==5)
+mt.gear.35
+# (4) mtcars 데이터셋에서 wt(중량)가 1.5~3.0 사이인 행들을 추출하여 출력하시오.??
+head(mtcars)
+subset(mt.gear,wt< 1.5 & wt<3.0)
+
 # 문6)
 # 다음의 문제를 해결하기 위한 R코드를 작성하시오.
 # 
@@ -116,12 +140,37 @@ head(y)
 #                                 "Spatial Statistics", "Stochastic Simulation",
 #                                 "Interactive Data Analysis" ),
 #                      other.author = c( NA, "Ripley", NA, NA, NA, NA ) )
-# 
-# (1) surname과 name을 공통 열로 하여 authors와 books를 병합하여 출력하시오(두						   
-#                                                        데이터프레임에서 공통 열의 값이 일치하는 것들만 병합).
+
+
+authors <- data.frame( surname = c( "Twein", "Venables", "Tierney", "Ripley", "McNeil" ),
+                       nationality = c( "US", "Australia", "US", "UK", "Australia" ),
+                       retired = c( "yes", rep( "no", 4 ) ) )
+
+
+books <- data.frame( name = c( "Johns", "Venables", "Tierney", "Ripley", "Ripley", "McNeil" ),
+                                           title = c( "Exploratory Data Analysis", 
+                                                     "Modern Applied Statistics ...",
+                                                     "LISP-STAT",
+                                                     "Spatial Statistics", "Stochastic Simulation",
+                                                     "Interactive Data Analysis" ),
+                                          other.author = c( NA, "Ripley", NA, NA, NA, NA ) )
+# (1) surname과 name을 공통 열로 하여 authors와 books를 병합하여 출력하시오(두					   
+#   ??                                                     데이터프레임에서 공통 열의 값이 일치하는 것들만 병합).
+
+A<-authors; A
+B<-books;B
+merge(A,B)
+
 # (2) surname과 name을 공통 열로 하여 authors와 books를 병합하여 출력하되
 # authors의 행들이 모두 표시되도록 하시오.
+
+
+
+
+
+
 # (3) surname과 name을 공통 열로 하여 authors와 books를 병합하여 출력하되 books
 # 의 행들은 모두 표시되도록 하시오.
+
 # (4) surname과 other.author를 공통 열로 하여 authors와 books를 병합하여 출력하
 # 시오.	
