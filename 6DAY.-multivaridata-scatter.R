@@ -77,7 +77,7 @@ abline(res) #3)회귀선 ,lm을 해야 나옴
 cor(tbl[,1:2])  #4)상관 계수  cor(mtcars,mpg)와 같은 형식으로도 할 수 있음
 cor(iris[,1:4]) #5)다변량으로 상관계수  -0.5 보다크면 0.5보다 크면 
 
-
+--cor()함수는 데이터 프레임으로 바꿔서 넣거나 콤마를 쓸수 있는데 많은 변수를 사용하기는 어려우므로 데이터 프레임으로 바꾸는게 제일 좋다.
 
 
 #상관분석 순서
@@ -162,7 +162,7 @@ myds<-BostonHousing[,c("crim",
 
 
 #2단계:파생변수 추가: grp 변수 추가(주택가격 상중하)  값이 나옴
-grp<-c()                                    ##?? 여기부터 쭉 모르겠다.
+grp<-c()                                    ##??밖에서 만들고 안에서 작업하고 밖에서 쓰려고 저장공간을 만들어준다.
 for (i in 1:nrow(myds)) {
         if(myds$medv[i]>=25.0){
            grp[i]<-'H'
@@ -174,8 +174,7 @@ for (i in 1:nrow(myds)) {
         }
 }
 
-
-
+class(grp)
 grp<-factor(grp)
 grp<-factor(grp,levels=c("H","M","L"))
 myds<-data.frame(myds,grp)
@@ -187,7 +186,8 @@ str(myds)
 head(myds)
 table(myds$grp)
 
-#4단계:히스토그램에 의한 관측값의 분포 확인, par=가상화면화면 분할
+#4단계:히스토그램에 의한 관측값의 분포 확인, par=가상화면화면 분할 
+
 par(mfrow=c(2,3))
 for(i in 1:5){
         hist(myds[,i],
@@ -198,6 +198,7 @@ par(mfrow=c(1,1)) #가상화면 복귀
 
 
 #5단계:상자그림에 의한 관측값의 분포 확인 ?? 어떻게 읽냐 모르겠다.....
+#4번 5번은 확인하는 단계어떻게 모양이 그려지는지
 
 par(mfrow=c(2,3))
 for(i in 1:5) {
@@ -207,14 +208,13 @@ for(i in 1:5) {
 par(mfrow=c(1,1)) #가상화면 복귀
 
 #6단계:그룹별 관측값 분포 확인 # 값나옴
-boxplot(myds$crim~myds$grp,
-        main="1인당 범죄율")    ##?? 어떻게 읽냐
-boxplot(myds$rm~myds$grp,
-        main="방의 개수")
+boxplot(myds$crim~myds$grp, main="1인당 범죄율")    ##? 범주형은 x축 ,물결 뒤로 
+boxplot(myds$rm~myds$grp,main="방의 개수")          
 
 #7단계:다중 산점도를 통한 변수간 상관 관계 확인
-pairs(myds[,-6])
+pairs(myds[,-6]) #범주형은 뺀것, 범주형은 보통 박스로 보는게 편하기 때문에
 
+pairs(myds[,])
 
 #8단계:그룹 정보를 포함한 변수 간 상관 관계 확인
 
@@ -225,8 +225,9 @@ pairs(myds[,-6],pch=point,
 
 #9단계:변수 간 상관 계수 확인
 cor(myds[,-6])                  ##?? 왜 -6이지?
-
+dim(myds)
 
 #Data 이해:1.data set 에 대한 이해 
           # 2.문제 정의 검증
           # 3.문제 정의에 대한 1차 결과 파악
+

@@ -9,13 +9,32 @@ inco.1<-c(121,99,41,35,40,29,35,24,50,60) ;inco.1
 leti.1<-c(19,20,16,16,18,12,14,12,16,17);leti.1
 i.i<-data.frame(inco.1,leti.1);i.i
 
-plot(inco.1,leti.1,main = "수입과 교육기관 그래프",
+plot(inco.1,leti.1,main = "수입과 교육기간 그래프",
      xlab="수입", ylab="교육기간",
      col="red",pch=19)
 
 cor(i.i) #데이터프레임 만들어준 후에 상관계수 구하기
 cor(inco.1,leti.1)
  #양의 상관관계가 있음
+
+
+#선생님답 
+income <- c( 121, 99, 41, 35, 40, 29, 35, 24, 50, 60 )
+period <- c( 19, 20, 16, 16, 18, 12, 14, 12, 16, 17 )
+
+tbl <- data.frame( income, period )
+tbl 
+
+plot( income~period, data = tbl )
+res <- lm( income~period, data = tbl )
+abline( res )
+
+cor( income, period )
+
+# 상관계수가 0.7292108으로 비교적 강한 양의 상관관계를 가진다.
+# 교육받은 기간이 길수록 수입이 증가
+
+
 
 # 
 # 문2)
@@ -37,7 +56,23 @@ cor(sco.1,t.t)
 #상관계수: 음의 상관관계가 있다.
 
 
-# 
+# 선생님답
+score <- c( 77.5, 60, 50, 95, 55, 85, 72.5, 80, 92.5, 87.5 )
+tv <- c( 14, 10, 20, 7, 25, 9, 15, 13, 4, 21 )
+
+tbl <- data.frame( score, tv )
+tbl 
+
+plot( score~tv, data = tbl )
+res <- lm( score~tv, data = tbl )
+abline( res )
+
+cor( score, tv ) #콤마로 알아낼 수 있다. 문5)과 같이 
+
+# 상관계수가 -0.6283671로 비교적 강한 음의 상관관계를 가진다.
+# TV 시청 시간이 증가할수록 성적은 감소한다.
+
+
 # 문3) 
 # R에서 제공하는 mtcars 데이터셋에서 mpg와 다른 변수들 간의 상관계수를
 # 구하시오. 어느 변수가 mpg와 가장 상관성이 높은지 산점도와 함께 설명하시오.			
@@ -51,8 +86,19 @@ target<-mtcars[ , m.t]
 pairs(target,main="muti plots")
 cor(target)
 
-cor(mtcars,mpg) #한줄로 끝남
+cor(mtcars,mpg) #한줄로 끝남?? 데이터 프래임으로 만들어야 함
 #w.t 가 가장 상관관계가 높음, 음의 상관관계
+
+#선생님답
+
+head( mtcars )
+
+cor( mtcars )
+cor( mtcars )[ 1, ]
+
+# disp와의 상관계수가 -0.8475514로 가장 상관성이 높다.-틀린것 같음  
+
+
 
 
 # 문4)
@@ -78,6 +124,11 @@ plot(year, p.p, main="예상인구수",  #lwd = 선의 두께 ,
      xlab="year",  ylab="인구수",
      lty=1,  lwd=1,)
 
+#선생님답
+year <- 2015:2026
+pop <- c( 51014, 51245, 51446, 51635, 51811, 51973, 52123, 52261, 52388, 52504, 52609, 52704 )
+plot( year, pop, type = 'l', main = '인구수 추계' )
+
 
 # 문5)
 # R에서 제공하는 trees 데이터셋에 대해 다음 문제를 해결하기 위한 R 코
@@ -88,6 +139,18 @@ tr <- trees[,c('Girth','Height')]
 tr
 plot(tr)
 cor(tr)
+
+#선생님답
+tbl <- data.frame( trees$Girth, trees$Height )
+tbl
+
+plot( trees$Girth, trees$Height )
+
+plot( trees.Girth~trees.Height, data = tbl )
+res <- lm( trees.Girth~trees.Height, data = tbl )
+abline( res )
+
+cor( trees$Girth, trees$Height ) #-콤마로 알아낼 수 있다.
 
 # (2) trees 데이터셋에 존재하는 3개 변수 간의 산점도와 상관계수를 보이시오.
 trees
