@@ -42,16 +42,19 @@ df.xlsx <- read.xlsx(file="airquality.xlsx",sheetIndex = 1,
                      encoding="UTF-8")
 
 df.xlsx
+View(df.xlsx) #R studio 에서 보려면
+
+
 class(df.xlsx)
 str(df.xlsx)
 head(df.xlsx)
 tail(df.xlsx)
 
-encoding 을 utf-8 로 해야한다.그래야 한글이 안 깨짐
+#encoding 을 utf-8 로 해야한다.그래야 한글이 안 깨짐
 
-base  -  read.table( ) 일반 텍스트 파일
-      - dead.csv() csv 텍스트 파일
-rJava: read.xlsx( )excel 파일
+#base  -  read.table( ) 일반 텍스트 파일
+# - dead.csv() csv 텍스트 파일
+#rJava: read.xlsx( )excel 파일
 
 
 

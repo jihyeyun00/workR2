@@ -205,9 +205,13 @@ Population
 
 
 #csv file 내용읽기
-setwd("D:/WorkR")  #/써야한다
-air <- read.csv("airquality.csv",header=T) #엑셀파일에서 오존,등등
-                                            #없는 경우는 F
+setwd("D:/WorkR2")  #/써야한다               #먼저 컴퓨터에 다운 받고
+air <- read.csv("airquality.csv",header=T)  #file 안써도 돼, 인코딩 안써도 돼(한글깨질때 사용),sheetIndex=1 도 안해도 돼, 헤더가 있으면 T(엑셀파일에서 오존,등등)
+air
+View(air)
+
+
+                                       #없는 경우는 F
 class(air)
 dim(air)
 str(air)

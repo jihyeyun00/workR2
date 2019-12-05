@@ -428,7 +428,7 @@ mpg%>%
   head(5)
 
 
-#data 합치기
+#data 합치기 -공통변수가 있다는 가정하에   ##전체질문
 # left_join(): 가로로합치기(변수추가)
 # inner_join(): 가로로합치기(변수추가)
 # full_join(): 가로로합치기(변수추가)
@@ -436,8 +436,11 @@ mpg%>%
 
 df1<-data.frame(id=c(1,2,3,4,5),         #??
                 midterm=c(60,80,70,90,85))
+
+df1
 df2<-data.frame(id=c(1,2,3,4,5),
                 final=c(60,80,70,90,85))
+df2
 total<-left_join(df1,df2,by="id")
 total
 
@@ -454,6 +457,10 @@ df_inner<-inner_join(df1,df2,by='id')
 df_inner
 df_full<-full_join(df1,df2,by='id')
 df_full
+df_bind<-bind_rows(df1,df2)
+df_bind
+
+
 
 
 
