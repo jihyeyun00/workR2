@@ -263,39 +263,59 @@ jeju<-c(96.4,	2.1,0.5,0.7)
 names(jeju)<-c("도보","승용차","자전거","택시")
 jeju
 
-late1<-c(5,8,7,9,4,6,12,13,8,6,6,4)
-late2<-c(4,6,5,8,7,8,9,10,11,6,5,7)
+summary(seoul)   #최소, 최대, 중앙 값등을 알려줘서 한번에 알 수 있다.
+summary(jeju)
 
-plot(month, late1, main='지각생통계',
-     type="b", lty=1, col="red",
-     xlab="Month", ylab="late cnt",
-     ylim=c(1,15))
-lines(month,late2,type = "b",lty=1,   
-      col="blue")
+barplot(seoul,main = '서울대중교통 근접수단',col='yellow')  #팩터(숫자)가 아니지만 성격을 보면 #범주형이라는 것
+#그래서 도수 분포표를 쓸 수 있다. 
+barplot(jeju,main = '제주대중교통 근접수단',col='blue') 
+
+summary(seoul)
+summary(jeju)
+
+attributes(A)
+
+A$도보
+A$승용차
+bicy<-A$자전거
+plot(A$도보)
+
+A['도보']
+
+plot(A$도보)
+A[2]
+A[3,]
+A[1,]
+plot(A[3,])
+A[,3]
+A[c('도보','자전거')]
+plot(A$도보,A$자전거)
+A[1,c('도보','자전거')]
+sum(A$오토바이)
+sum(A$오토바이,na.rm=T)
+
+apply(A,2,function(y) sum(is.na(y)))   #A라는 데이터에는 관측치에서 16개의 NA 가 있다.
+#                          익명함수
+
+auto.na<-A$오토바이 ;auto.na #벡터생성
+auto.na2<-na.omit(A$오토바이)
+A$auto.na2=ifelse(!is.na(A),A,0)
+ifelse(!is.na(),A,0)
+A[,'도보']
+A['서울',]
+edit(A)
+A[2,'도보']  #이렇게해야나옴!!!
+A['부산',c('도보','자전거')]
+subset( A, 도보 >= 94, select = c( '도보','자전거' ) ) 
+stem(A$도보)
+summary(A)
+length(A$오토바이)
+A2<-subset(A,오토바이>0)
+length(A2$오토바이)
+
+A$도보2[A$도보==1]<-'1.'
+
+boxplot(seoul,main='서울') #박스플롯:데이터가 분포가 어떤지있지 알수 
+boxplot(jeju,main='제주')
 
 
-
-
-
-
-hist(seoul, main='서울',col='purple') 
-boxplot(seoul$도보~seoul택시, #그룹으로 묶일것 물결 다음
-        data=seoul, 
-        main='서울')
-boxplot(mtcars$mpg~mtcars$gear,
-        main='연비') 
-
-
-
-
-
-
-
-boxplot.stats(score)$out 
-subset[ko,(ko$도보)]
-subset(iris,Sepal.Length>7.5)
-subset(iris,Sepal.Length>5.1 & Sepal.Width >3.9) 
-
-
-subset(iris,Sepal.Length>7.6,
-       select = c(Petal.Length,Petal.Width))
