@@ -32,6 +32,12 @@ ggplot(trees,aes(x= Girth))+
   geom_histogram(fill='steelblue',
                  binwidth=3.0)+
   labs(title="내맘대로",x="나무둘레",y="빈도수")
+
+ggplot(trees,aes(x= Girth))+
+  geom_histogram(fill='steelblue',
+                 binwidth=3.0)+
+ ggtitle("제목")+
+ labs(x="나무둘레",y="빈도수")
  
 # 문5)
 # R에서 제공하는 mtcars 데이터셋에서 mpg(연비)를 x축으로 하고, wt(중량)를 y축으로 
@@ -88,6 +94,7 @@ View(us)
 
 library(treemap)
 st<-rownames(us)
+View(st)
 us1<-data.frame(us,st)
 us1
 

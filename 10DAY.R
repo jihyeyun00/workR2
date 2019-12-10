@@ -3,6 +3,13 @@
 #markdown 형식->보고서 작성용 ,(크기를 다양하게 활용할 수 있는)
 install.packages("tidyverse")
 library(ggplot2)
+#히스토그램같이 연속형 은 테이블 함수를 (도수분포표를)만들수 없다.구간간격을 지정해야
+#상자수염그래프는 x 축이 의미가 없다.
+#factor( mtcars$cyl ) ) ) + #그룹으로 묶는 것
+#기어가 범주형이므로 컬러에 쓸수있다
+#트리맵은 한눈에 인구분포(매출규모)를 파악하기 위해
+#rownames:왼쪽 행의 이름들,그래서 names 함수로 이름을 정해주는 것,
+#colnames:위쪽 열의 이름들
 
 #https://www.tidyverse.org/packages/
 #https://ggplot2.tidyverse.org/
@@ -24,16 +31,16 @@ rain<-c(55,50,45,50,60,70)
 df<-data.frame(month,rain)
 df
 
-ggplot(df,aes(x=month,y=rain))+            #ggplot,+,mapping 생략도 가능
-  geom_bar(stat = "identity",              #stat :y, width: 폭, fill :막대색깔
+ggplot(df,aes(x=month,y=rain))+            
+  geom_bar(stat = "identity",              
            width = 0.7,
            fill="steelblue")
 
 
 
 ggplot(df,aes(x=month,y=rain))+            #ggplot,+,(mapping 생략도 가능)
-  geom_bar(stat = "identity",              #stat :y축값으로 막대높이를 정하라 , width: 폭, fill :막대색깔
-           width = 0.7,
+  geom_bar(stat = "identity",              #stat :y값이있어야함,y축값으로 막대높이를 정하라 
+           width = 0.7,                    #width: 폭, fill :막대색깔
            fill="steelblue")+
 
 ggtitle("월별강수량")+
@@ -186,6 +193,7 @@ treemap(GNI2014,
 
 st<-data.frame(state.x77)
 st<-data.frame(st,stname=rownames(st)) #data.frame(컬럼1=자료, 컬럼2=자료...)
+View(st)
 treemap(st,
         index=c("stname"),
         vSize = "Area",

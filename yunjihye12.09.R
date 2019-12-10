@@ -8,14 +8,12 @@
 # 은 ‘빈도수’로 나타내시오.
 #
 str(mtcars)
-ggplot(mtcars,aes(x=gear,y="빈도수"))+            #ggplot,+,mapping 생략도 가능
-geom_bar(stat = "identity",              #stat :y, width: 폭, fill :막대색깔
+head(mtcars)
+ggplot(mtcars,aes(x=gear))+            #ggplot,+,mapping 생략도 가능
+geom_bar(              #stat :y, width: 폭, fill :막대색깔
          width = 0.7,
          fill="steelblue")+
 ggtitle("기어수와 빈도")+
-  theme(plot.title = element_text(size = 25,   
-                                  face = "bold",
-                                  colour="steelblue"))+
   labs(x="기어의 수",y="빈도수")
 
 # 문2)
@@ -36,7 +34,7 @@ ggplot(mtcars,aes(x=cyl))+            #ggplot,+,mapping 생략도 가능
 # 
 ggplot(mtcars,aes(x=mpg))+
   
-  geom_histogram(binwidth = 0.5)        #답 잘보자
+  geom_histogram(binwidth = 5.0)        #답 잘보자
 
 
 # 문4)??
@@ -45,7 +43,7 @@ ggplot(mtcars,aes(x=mpg))+
 # 레이블을 한글로 표시하시오. (구간 간격은 3.0, 막대의 색은 steelblue로 한다.)
 str(trees)
 head(trees)
-ggplot(trees,aes(x=as.factor(Girth))+       
+ggplot(trees,aes(x=as.factor(Girth)))+       
   geom_histogram(binwidth = 3.0)+        
   ggtitle("나무둘레")+
   theme(plot.title = element_text(size=25,
