@@ -57,7 +57,7 @@ tsne<-Rtsne(ds, dim=2,  perplexity=10) #차원축소대상 데이터셋
                             #데이터 샘플링을 수행하는데
                             #샘플의 개수
                             #(대상데이터수)/3 보다 작게 지정
-tsne<-Rtsne(ds, dim=2,  perplexity=10)
+
 tsne
 
 #차원축소결과 시각화 
@@ -103,7 +103,7 @@ library(ggmap)
 
 register_google(key = 'AIzaSyBdvaqxtk8AUDQE8fSZly76zSmzu6vYEP4')
 
-gc<-geocode(enc2utf8("제주"))   #원하는 지점 위도, 경도를 알아서 알려줌 (tibble함수=데이터프레임같은거)
+gc<-geocode(enc2utf8("제주"))   #원하는 지점 위도, 경도를 자동으로 알아서 알려줌 (tibble함수=데이터프레임같은거)
 gc
 
 cen<-as.numeric(gc) #경도/ 위도를 "숫자"로 변환
@@ -122,8 +122,11 @@ map<-get_googlemap(center = cen,    #지도 중심점 좌표
                    maptype = "roadmap") #지도 유형 (hybrid,terrain 도 있음)
 ggmap(map)
 
-#꺄오내가만든 지도 !!!!
-gc1<-data.frame(lon=126.560164, lat=33.247416) #경도, 위도 데이터셋 만들기
+#꺄오내가만든 지도 !!!! 
+#"직접 경도와 위도를 지정할때는 geo, numeric 코드를 쓸 필요 없다.!!!!"
+
+#gc1<-data.frame(lon=126.560164, lat=33.247416) #해야하나???선생님은 안함,경도, 위도 데이터셋 만들기
+
 cen<-c(126.560164,33.247416)   #경도, 위도/구글맵에서는 위도/경도
 map<-get_googlemap(center = cen,
                    zoom = 15,
@@ -136,6 +139,7 @@ gmap+
             aes(x=lon,y=lat),   #텍스트 위치 (경도, 위도값)
             size=5,             #텍스트 크기
             label="긍정동커피")      #텍스트 이름
+
 
 
 
