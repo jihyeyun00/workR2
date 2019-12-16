@@ -3,7 +3,7 @@
 #Text Mining: Text data 로부터 규칙과 패턴을 발견하는 기법, 차료처리 과정과 자료 분석 과정:Text :비정형 데이타 
 #Text data 를 분석하는 데 쓰는 Word cloud :자연어 처리
 
-
+##문제정의 후 방향성을 잡을 때. 경향파악
 
 #워드클라우드(Word Cloud)
 #한글 워드 클라우드 절차
@@ -22,7 +22,7 @@ install.packages("RColorBrewer") #색상선택
 
 library(wordcloud)
 library(wordcloud2)
-library(KoNLP)
+library(KoNLP)      #사전등록1.
 library(RColorBrewer)       #사전설정해야한다.
 
 library(dplyr)
@@ -42,7 +42,7 @@ class(noun)
 #4.추출된 단어(주로 명사)에 대한 빈도수 계산 및 시각화 
 
 noun2<-unlist(noun)   #list->vector 로 변환 
-wordcount<-table(noun2)
+wordcount<-table(noun2)  #빈도수 체크!!
 sort.noun<-sort(wordcount,decreasing = T)[1:10]
 sort.noun
 sort.noun<-sort.noun[-1]   #의미없는 공백 제거
@@ -111,7 +111,7 @@ wordcloud(names(wordcount),       #단어
 #애국가 형태소 분석
 library(KoNLP)
 useSystemDic()
-useSejongDic()
+useSejongDic()    #사전등록 2. konlp, sesystemdic 둘중 하나
 useNIADic()
 
 #애국가 가사 :
