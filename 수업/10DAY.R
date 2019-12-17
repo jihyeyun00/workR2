@@ -111,13 +111,17 @@ ggplot(data = iris,mapping = aes(y=Petal.Length,
 
 
 #ggplot Line chart 시계열 데이터를 쓸때 선그래프
+#선그래프를 여러개 그릴때는 geom_line 에 aes 좌표를 넣어준다.
+
 year<-1937:1960
 cnt<-as.vector(airmiles)
 df<-data.frame(year,cnt)
 head(df)
 
-ggplot(df,aes(x=year,y=cnt))+
+ggplot(df,aes(x=year,y=cnt))+     
   geom_line(col="red")
+  geom_line(aes(x=year,y=))
+
 
 
 #ggplot 작성 graph 꾸미기(공통)

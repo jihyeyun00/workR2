@@ -87,8 +87,8 @@ abline(model)
 
 coef(model)      #매개변수(계수)-w,b 값 출력
 cars
-fitted(model)    #훈련 data에 있는 샘플에 대한 예측값 
-residuals(model)  #잔차 : 회귀식으로 추정된 값과 실제 값과의 차이 (오차)
+fitted(model)    #훈련 data에 있는 샘플에 대한 "예측값" 
+residuals(model)  #잔차 : 회귀식으로 추정된 값과 실제 값과의 차이, "오차"
 
 #잔차제곱합을 평균 제곱 오차(MES-mean squarde error)로 변환
 deviance(model)/length(cars$model)
@@ -101,7 +101,7 @@ dist<-w*speed+b
 dist
 
 #확인인가?
-df<-data.frame(speed=c(21.5,25.0,25.5,26.0,26.5,27.0,27.5,28.0))
+df<-data.frame(speed=c(21.5,25.0,25.5,26.0,26.5,27.0,27.5,28.0)) #훈련데이타에서는 x,y값이 모두 필요하지만 x값만 주면 된다.
 predict(model,df)                              #lm 함수, 데이터프레임(스피드값 넣어준)
 plot(df$speed,predict(model,df),col='red',     #데이터프레임(스피드값 넣어준)$구하려는 설명변수, predict(lm 함수, 데이터 프레임                                                 #(스피드값 넣어준 )
      cex=2,pch=20)

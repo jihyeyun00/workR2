@@ -17,7 +17,7 @@ coef(state)
 y=w*x+b
 y=4.257*Illiteracy+2.397
 
-df<-data.frame(Illiteracy=c(0.5,1.0,1.5))
+df<-data.frame(Illiteracy=c(0.5,1.0,1.5))  #훈련데이타에서는 x,y값이 모두 필요하지만 x값만 주면 된다.
 predict(state,df)
 plot(df$Illiteracy,predict(state,df),col='red',    #pridict r에서 제공하는 예측수행함수->plot 에 넣어서 확인
      cex=2,pch=20)
@@ -65,4 +65,4 @@ temp<-data.frame(temperature=c(65,95,155));temp
 predict(pr,temp)
 plot(temp$temperature,predict(pr,temp),col='red',    #pridict r에서 제공하는 예측수행함수->plot 에 넣어서 확인
      cex=2,pch=20)
-abline(press)
+abline(pr)
