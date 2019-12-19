@@ -42,7 +42,6 @@ ggplot(df,aes(x=month,y=rain))+            #ggplot,+,(mapping 생략도 가능)
   geom_bar(stat = "identity",              #stat :y값이있어야함,y축값으로 막대높이를 정하라 
            width = 0.7,                    #width: 폭, fill :막대색깔
            fill="steelblue")+
-
 ggtitle("월별강수량")+
 theme(plot.title = element_text(size = 25,   #'월별강수량'의 꾸미기
                                 face = "bold",
