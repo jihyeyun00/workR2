@@ -105,7 +105,27 @@ my_model
 # (2) mydata에서 합격 여부(admit)를 제외한 데이터를 예측 대상 데이터로 하여 (1)에서 만든 모델에 입력하여 
 # 합격 여부를 예측하고 실제값과 예측값을 나타내시오. 무슨말??
 # 
-myzero<-mydata.new%>%filter(admit==0)
+#선생님
+#예측값
+pred <- predict( mydata_model, mydata[ , c( 'gre', 'gpa', 'rank' ) ] )
+pred
+# one-hot encoding
+pred <- round( pred, 0 )
+pred
+
+# 예측값, 정답
+result <- data.frame( predict = pred, answer = mydata$admit )
+result
+
+#(3) 만들어진 모델의 예측 정확도를 나타내시오.
+acc <- mean( result$predict == result$answer )
+acc
+
+#예측 정확도 : 0.705
+
+
+#내가 한것
+myzero<-mydata.new%>%filter(admit==0)  
 myzero
 
 admit=(-0.1824127)+

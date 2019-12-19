@@ -115,7 +115,7 @@ summary(model3)
 
 
 
-#범주형
+#범주형: 결과값이 범주형으로 나와야 함 예)남, 여인가, 어떤 품종인가
 #Linear Regession 연속형 데이터에 대한 예측
 #Logistic Regession : (로지스틱 회귀분석) :one hot encoding     #예)스팸or No
 #                   :회귀모델에서 종속변수의 값의 형태가 범주형인 경우의 에측모델
@@ -138,11 +138,14 @@ unknown<-data.frame(rbind(c(5.1,3.5,1.4,0.2)))
 names(unknown)<-names(iris)[1:4]
 unknown
 
-pred<-predict(iris_model,unknown)
+pred<-predict(iris_model,unknown)  
 pred
 
 pred<-round(pred,0) #반올림 함수
-levels(iris$Species)[pred]    #결국 어떤 꽃인지 알아내는 것
+
+levels(iris$Species)[pred]    
+
+#setosa 가 나옴 #결국 어떤 꽃인지 알아내는 것
 
 #test 
 test<-iris[,1:4]       
@@ -154,3 +157,39 @@ pred==answer
 acc<-mean(pred==answer)
 acc
 
+
+#예제문제
+#문3) 
+#UCLA 대학원의 입학 데이터를 불러와서 mydata에 저장한 후 다음 물음에 답하시오.
+
+mydata <- read.csv( "https://stats.idre.ucla.edu/stat/data/binary.csv" )
+
+#(1) gre, gpa, rank를 이용해 합격 여부(admit)를 예측하는 로지스틱 모델을 만드시오(0: 불합격, 1:합격).
+str( mydata )
+head( mydata )
+
+mydata_model <- glm( admit~gre + gpa + rank, data = mydata )
+
+coef( mydata_model )
+summary( mydata_model )
+
+#(2) mydata에서 합격 여부(admit)를 제외한 데이터를 예측 대상 데이터로 하여 (1)에서 만든 모델에 입력하여        (합격여부에 상관없이)
+#합격 여부를 예측하고 실제값과 예측값을 나타내시오.
+
+# 예측값
+pred <- predict( mydata_model, mydata[ , c( 'gre', 'gpa', 'rank' ) ] )
+pred
+
+# one-hot encoding
+pred <- round( pred, 0 )
+pred
+
+# 예측값, 정답
+result <- data.frame( predict = pred, answer = mydata$admit )
+result
+
+#(3) 만들어진 모델의 예측 정확도를 나타내시오.
+acc <- mean( result$predict == result$answer )
+acc
+
+#예측 정확도 : 0.705
