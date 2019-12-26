@@ -36,7 +36,7 @@ ggplot(df,aes(x=month,y=rain))+
            width = 0.7,
            fill="steelblue")
 
-
+#막대순서 바꾸기:https://rfriend.tistory.com/93
 
 ggplot(df,aes(x=month,y=rain))+            #ggplot,+,(mapping 생략도 가능)
   geom_bar(stat = "identity",              #stat :y값이있어야함,y축값으로 막대높이를 정하라 
